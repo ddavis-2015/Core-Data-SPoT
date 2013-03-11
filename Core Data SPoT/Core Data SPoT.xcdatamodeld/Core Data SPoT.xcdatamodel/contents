@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C60" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="PhotoInfo" representedClassName="PhotoInfo" syncable="YES">
+        <attribute name="flickrDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flickrID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flickrImageIcon" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="flickrImageIconURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flickrImageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="flickrTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastUpdated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastUsed" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="sectionName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PhotoTag" inverseName="photos" inverseEntity="PhotoTag" syncable="YES"/>
+    </entity>
+    <entity name="PhotoTag" representedClassName="PhotoTag" syncable="YES">
+        <attribute name="flickrName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sectionName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PhotoInfo" inverseName="tags" inverseEntity="PhotoInfo" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="PhotoInfo" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="PhotoTag" positionX="-272" positionY="126" width="128" height="88"/>
+    </elements>
+</model>
