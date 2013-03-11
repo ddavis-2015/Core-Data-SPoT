@@ -116,9 +116,10 @@
 
             [NetworkActivity stopIndicator];
 
-            [self.managedObjectContext performBlock:^
+            [[self.managedObjectContext parentContext] performBlock:^
             {
-                [self processFlickrData:photos managedObjectContext:self.managedObjectContext];
+                [self processFlickrData:photos managedObjectContext:[self.managedObjectContext parentContext]];
+                assert([[self.managedObjectContext parentContext] save:nil]);
                 dispatch_async(dispatch_get_main_queue(), ^
                 {
                     completion();

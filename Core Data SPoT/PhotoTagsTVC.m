@@ -24,6 +24,7 @@
     [self.refreshControl beginRefreshing];
     [[SharedDocument sharedInstance] update:^
     {
+        [self performFetch];
         [self.refreshControl endRefreshing];
     }];
 }
