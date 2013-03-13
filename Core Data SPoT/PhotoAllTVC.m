@@ -211,7 +211,7 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    [self deactivateSearch:nil];
+    [self deactivateSearch:searchBar];
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
@@ -221,7 +221,7 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self deactivateSearch:nil];
+    [self deactivateSearch:searchBar];
 }
 
 - (IBAction)activateSearch:(id)sender
@@ -230,6 +230,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.tableView.tableHeaderView = self.searchBar;
     self.deactivateSearchTap.enabled = YES;
+    [self.tableView scrollRectToVisible:self.searchBar.frame animated:NO];
 }
 
 - (IBAction)deactivateSearch:(id)sender

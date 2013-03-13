@@ -7,7 +7,7 @@
 //
 
 #import "PhotoImageVC.h"
-//#import "PhotoSplitVC.h"
+#import "PhotoSplitVC.h"
 #import "NetworkActivity.h"
 #import "CachedURL.h"
 
@@ -163,7 +163,7 @@
     self.scrollView.delegate = self;
     self.title = self.title;
     [self reloadImage];
-//    [(PhotoSplitVC*)self.splitViewController detailViewDidLoad];
+    [(PhotoSplitVC*)self.splitViewController detailViewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning

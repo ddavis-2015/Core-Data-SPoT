@@ -34,6 +34,7 @@
 		4DB17B4716EB453500F70449 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB17B4616EB453500F70449 /* CoreData.framework */; };
 		4DB17B4D16EB50E100F70449 /* SharedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DB17B4C16EB50E100F70449 /* SharedDocument.m */; };
 		4DB17B5016EB512000F70449 /* Core Data SPoT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DB17B4E16EB512000F70449 /* Core Data SPoT.xcdatamodeld */; };
+		4DFCF4B916F12C6D008D181C /* PhotoSplitVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DFCF4B816F12C6D008D181C /* PhotoSplitVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,8 @@
 		4DB17B4B16EB50E100F70449 /* SharedDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedDocument.h; path = Models/SharedDocument.h; sourceTree = "<group>"; };
 		4DB17B4C16EB50E100F70449 /* SharedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharedDocument.m; path = Models/SharedDocument.m; sourceTree = "<group>"; };
 		4DB17B4F16EB512000F70449 /* Core Data SPoT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Core Data SPoT.xcdatamodel"; sourceTree = "<group>"; };
+		4DFCF4B716F12C6D008D181C /* PhotoSplitVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoSplitVC.h; sourceTree = "<group>"; };
+		4DFCF4B816F12C6D008D181C /* PhotoSplitVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoSplitVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,8 @@
 				4DB17B3216EB3A7F00F70449 /* PhotoImageVC.m */,
 				4D838D9C16EFC9DC00D517D7 /* PhotoAllTVC.h */,
 				4D838D9D16EFC9DC00D517D7 /* PhotoAllTVC.m */,
+				4DFCF4B716F12C6D008D181C /* PhotoSplitVC.h */,
+				4DFCF4B816F12C6D008D181C /* PhotoSplitVC.m */,
 				4DB17B3E16EB3C4100F70449 /* FlickrFetcher */,
 				4DB17B3D16EB3AC800F70449 /* Models */,
 				4DB17B0C16EB369600F70449 /* Supporting Files */,
@@ -284,6 +289,7 @@
 				4D55CE1D16ED282A004EB357 /* PhotoInfo.m in Sources */,
 				4D55CE2016ED282B004EB357 /* PhotoTag.m in Sources */,
 				4D838D9E16EFC9DC00D517D7 /* PhotoAllTVC.m in Sources */,
+				4DFCF4B916F12C6D008D181C /* PhotoSplitVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
