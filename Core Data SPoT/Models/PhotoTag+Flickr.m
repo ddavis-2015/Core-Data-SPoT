@@ -28,7 +28,7 @@
 
     for (NSString* tag in tags)
     {
-        [fetch setPredicate:[NSPredicate predicateWithFormat:@"flickrName == %@", tag]];
+        [fetch setPredicate:[NSPredicate predicateWithFormat:@"flickrName ==[c] %@", tag]];
 
         NSArray* results = [context executeFetchRequest:fetch error:nil];
 
@@ -43,12 +43,38 @@
             assert(photoTag);
         }
 
-        photoTag.flickrName = tag;
+        photoTag.flickrName = [tag capitalizedStringWithLocale:[NSLocale currentLocale]];
         photoTag.sectionName = [[tag substringToIndex:1] uppercaseStringWithLocale:[NSLocale currentLocale]];
         [photoTags addObject:photoTag];
     }
 
     return photoTags;
+}
+
++ (PhotoTag *)addPhotoTagAllInManagedObjectContext:(NSManagedObjectContext *)context
+{
+    NSString* className = NSStringFromClass([self class]);
+    NSFetchRequest* fetch = [NSFetchRequest fetchRequestWithEntityName:className];
+    
+    [fetch setPredicate:[NSPredicate predicateWithFormat:@"flickrName == 'All'"]];
+
+    NSArray* results = [context executeFetchRequest:fetch error:nil];
+
+    assert(results);
+    assert([results count] <= 1);
+
+    PhotoTag* photoTag = [results lastObject];
+
+    if (!photoTag)
+    {
+        photoTag = [NSEntityDescription insertNewObjectForEntityForName:className inManagedObjectContext:context];
+        assert(photoTag);
+    }
+
+    photoTag.flickrName = @"All";
+    photoTag.sectionName = @"";
+
+    return photoTag;
 }
 
 @end

@@ -11,6 +11,7 @@
 		4D55CE1416EC0BCA004EB357 /* PhotoTag+Flickr.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D55CE1316EC0BC9004EB357 /* PhotoTag+Flickr.m */; };
 		4D55CE1D16ED282A004EB357 /* PhotoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D55CE1C16ED282A004EB357 /* PhotoInfo.m */; };
 		4D55CE2016ED282B004EB357 /* PhotoTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D55CE1F16ED282B004EB357 /* PhotoTag.m */; };
+		4D838D9E16EFC9DC00D517D7 /* PhotoAllTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D838D9D16EFC9DC00D517D7 /* PhotoAllTVC.m */; };
 		4DB17B0616EB369600F70449 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB17B0516EB369600F70449 /* UIKit.framework */; };
 		4DB17B0816EB369600F70449 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB17B0716EB369600F70449 /* Foundation.framework */; };
 		4DB17B0A16EB369600F70449 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DB17B0916EB369600F70449 /* CoreGraphics.framework */; };
@@ -44,6 +45,8 @@
 		4D55CE1C16ED282A004EB357 /* PhotoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoInfo.m; path = Models/PhotoInfo.m; sourceTree = "<group>"; };
 		4D55CE1E16ED282B004EB357 /* PhotoTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoTag.h; path = Models/PhotoTag.h; sourceTree = "<group>"; };
 		4D55CE1F16ED282B004EB357 /* PhotoTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoTag.m; path = Models/PhotoTag.m; sourceTree = "<group>"; };
+		4D838D9C16EFC9DC00D517D7 /* PhotoAllTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAllTVC.h; sourceTree = "<group>"; };
+		4D838D9D16EFC9DC00D517D7 /* PhotoAllTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoAllTVC.m; sourceTree = "<group>"; };
 		4DB17B0216EB369600F70449 /* Core Data SPoT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Data SPoT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DB17B0516EB369600F70449 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4DB17B0716EB369600F70449 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -141,6 +144,8 @@
 				4DB17B3016EB3A7F00F70449 /* PhotoTagsTVC.m */,
 				4DB17B3116EB3A7F00F70449 /* PhotoImageVC.h */,
 				4DB17B3216EB3A7F00F70449 /* PhotoImageVC.m */,
+				4D838D9C16EFC9DC00D517D7 /* PhotoAllTVC.h */,
+				4D838D9D16EFC9DC00D517D7 /* PhotoAllTVC.m */,
 				4DB17B3E16EB3C4100F70449 /* FlickrFetcher */,
 				4DB17B3D16EB3AC800F70449 /* Models */,
 				4DB17B0C16EB369600F70449 /* Supporting Files */,
@@ -278,6 +283,7 @@
 				4D55CE1416EC0BCA004EB357 /* PhotoTag+Flickr.m in Sources */,
 				4D55CE1D16ED282A004EB357 /* PhotoInfo.m in Sources */,
 				4D55CE2016ED282B004EB357 /* PhotoTag.m in Sources */,
+				4D838D9E16EFC9DC00D517D7 /* PhotoAllTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

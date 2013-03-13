@@ -12,4 +12,7 @@
 
 @interface PhotoTagsTVC : CoreDataTableViewController
 
+@property (strong, nonatomic) NSFetchRequest* fetchRequest;
+@property (strong, nonatomic) NSString* sectionNameKeyPath;
+
 @end

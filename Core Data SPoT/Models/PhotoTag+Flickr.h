@@ -12,5 +12,6 @@
 @interface PhotoTag (Flickr)
 
 + (NSSet*)addPhotoTags:(NSDictionary*)flickr managedObjectContext:(NSManagedObjectContext*)context; // PhotoTag*
++ (PhotoTag*)addPhotoTagAllInManagedObjectContext:(NSManagedObjectContext*)context;
 
 @end

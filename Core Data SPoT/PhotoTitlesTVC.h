@@ -13,7 +13,6 @@
 @interface PhotoTitlesTVC : CoreDataTableViewController
 
 @property (strong, nonatomic) NSFetchRequest* fetchRequest;
-@property (nonatomic) BOOL trackRecentlyViewed;
 @property (strong, nonatomic) NSString* sectionNameKeyPath;
 
 @end

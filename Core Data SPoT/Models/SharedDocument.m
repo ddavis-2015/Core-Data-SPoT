@@ -132,6 +132,11 @@
 - (void)processFlickrData:(NSArray*)photos managedObjectContext:(NSManagedObjectContext*)context
 {
     NSDate* now = [NSDate date];
+
+    PhotoTag* allTag = [PhotoTag addPhotoTagAllInManagedObjectContext:context];
+
+    if (allTag.photos)
+        [allTag removePhotos:allTag.photos];
     
     for (NSDictionary* photo in photos)
     {
@@ -143,6 +148,8 @@
         if (photoTags)
             [photoInfo addTags:photoTags];
         photoInfo.lastUpdated = now;
+
+        [allTag addPhotosObject:photoInfo];
     }
 }
 

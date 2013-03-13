@@ -8,6 +8,7 @@
 
 #import "PhotoRecentsTVC.h"
 #import "PhotoInfo.h"
+#import "SharedDocument.h"
 
 
 @interface PhotoRecentsTVC ()
@@ -37,8 +38,18 @@
     [fetch setFetchLimit:20];
 
     self.fetchRequest = fetch;
-    self.trackRecentlyViewed = NO;
     self.sectionNameKeyPath = nil;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle != UITableViewCellEditingStyleDelete)
+        return;
+
+    PhotoInfo* photoInfo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+    photoInfo.lastUsed = nil;
+    assert([[SharedDocument sharedInstance].managedObjectContext save:nil]);
 }
 
 @end

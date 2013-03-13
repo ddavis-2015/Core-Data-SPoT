@@ -30,8 +30,12 @@
     vc.title = cell.textLabel.text;
     vc.cacheKey = photoInfo.flickrID;
     vc.imageUrl = [NSURL URLWithString:photoInfo.flickrImageURL];
-    if (self.trackRecentlyViewed)
-        photoInfo.lastUsed = [NSDate date];
+    
+    if ([self class] != [PhotoTitlesTVC class])
+        return;
+
+    photoInfo.lastUsed = [NSDate date];
+    assert([[SharedDocument sharedInstance].managedObjectContext save:nil]);
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -106,7 +110,6 @@
             dispatch_async(dispatch_get_main_queue(), ^
             {
                 photoInfo.flickrImageIcon = data;
-                //[self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             });
         });
     }

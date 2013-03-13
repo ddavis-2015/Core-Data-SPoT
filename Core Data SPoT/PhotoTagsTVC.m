@@ -31,8 +31,15 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    PhotoTitlesTVC* vc = (PhotoTitlesTVC*)segue.destinationViewController;
     UITableViewCell* cell = (UITableViewCell*)sender;
+
+    if (![cell.reuseIdentifier isEqualToString:@"Cell"])
+    {
+        [segue.destinationViewController setTitle:cell.textLabel.text];
+        return;
+    }
+
+    PhotoTitlesTVC* vc = (PhotoTitlesTVC*)segue.destinationViewController;
     PhotoTag* photoTag = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForCell:cell]];
     NSFetchRequest* fetch = [NSFetchRequest fetchRequestWithEntityName:@"PhotoInfo"];
     NSSortDescriptor* sortTitle = [NSSortDescriptor sortDescriptorWithKey:@"flickrTitle"
@@ -48,7 +55,6 @@
 
     vc.title = cell.textLabel.text;
     vc.fetchRequest = fetch;
-    vc.trackRecentlyViewed = YES;
     vc.sectionNameKeyPath = @"sectionName";
 }
 
@@ -67,17 +73,9 @@
 
     [[SharedDocument sharedInstance] whenReadyPerformBlock:^
     {
-        NSFetchRequest* fetch = [NSFetchRequest fetchRequestWithEntityName:@"PhotoTag"];
-        NSSortDescriptor* sortName = [NSSortDescriptor sortDescriptorWithKey:@"flickrName"
-                                                                   ascending:YES
-                                                                    selector:@selector(localizedCaseInsensitiveCompare:)];
-        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"!(flickrName in %@)", @[@"cs193pspot", @"portrait", @"landscape"]];
-
-        [fetch setPredicate:predicate];
-        [fetch setSortDescriptors:@[sortName]];
-        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetch
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:self.fetchRequest
                                                                             managedObjectContext:[[SharedDocument sharedInstance] managedObjectContext]
-                                                                              sectionNameKeyPath:@"sectionName"
+                                                                              sectionNameKeyPath:self.sectionNameKeyPath
                                                                                        cacheName:nil];
         assert(self.fetchedResultsController.fetchedObjects);
         if (![self.fetchedResultsController.fetchedObjects count])
@@ -89,6 +87,17 @@
 {
     [super viewDidLoad];
 
+    NSFetchRequest* fetch = [NSFetchRequest fetchRequestWithEntityName:@"PhotoTag"];
+    NSSortDescriptor* sortName = [NSSortDescriptor sortDescriptorWithKey:@"flickrName"
+                                                               ascending:YES
+                                                                selector:@selector(localizedCaseInsensitiveCompare:)];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"!(flickrName in %@)", @[@"Cs193Pspot", @"Portrait", @"Landscape"]];
+
+    [fetch setPredicate:predicate];
+    [fetch setSortDescriptors:@[sortName]];
+
+    self.fetchRequest = fetch;
+    self.sectionNameKeyPath = @"sectionName";
     [self.refreshControl addTarget:self action:@selector(reloadPhotos) forControlEvents:UIControlEventValueChanged];
     self.tableView.sectionIndexMinimumDisplayRowCount = NSIntegerMax;
 }
@@ -103,13 +112,31 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier;
     PhotoTag* photoTag = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSUInteger count = [photoTag.photos count];
+
+    if (indexPath.section == 0 && indexPath.row == 0)
+    {
+        CellIdentifier = @"All";
+
+        NSFetchRequest* fetch = [NSFetchRequest fetchRequestWithEntityName:@"PhotoInfo"];
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"!(any tags.flickrName in %@)", @[@"Cs193Pspot", @"Portrait", @"Landscape", @"All"]];
+
+        [fetch setPredicate:predicate];
+        count = [[SharedDocument sharedInstance].managedObjectContext countForFetchRequest:fetch error:nil];
+        assert(count != NSNotFound);
+    }
+    else
+    {
+        CellIdentifier = @"Cell";
+        count = [photoTag.photos count];
+    }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [photoTag.flickrName capitalizedStringWithLocale:[NSLocale currentLocale]];
+    cell.textLabel.text = photoTag.flickrName;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%u photo%@", count, count > 1 ? @"s" : @""];
     
     return cell;
