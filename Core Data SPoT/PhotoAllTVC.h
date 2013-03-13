@@ -8,6 +8,6 @@
 
 #import "PhotoTagsTVC.h"
 
-@interface PhotoAllTVC : PhotoTagsTVC
+@interface PhotoAllTVC : CoreDataTableViewController
 
 @end

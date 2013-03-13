@@ -114,7 +114,7 @@
 {
     static NSString *CellIdentifier;
     PhotoTag* photoTag = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSUInteger count = [photoTag.photos count];
+    NSUInteger count;
 
     if (indexPath.section == 0 && indexPath.row == 0)
     {

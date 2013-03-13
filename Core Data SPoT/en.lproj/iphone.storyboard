@@ -154,9 +154,22 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" showsCancelButton="YES" id="9YB-ZN-BzS">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="Vgi-Iu-SCC" id="kF9-4v-2Dj"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="MbX-gT-bI8" detailTextLabel="B9m-8H-tab" style="IBUITableViewCellStyleSubtitle" id="zH8-9Y-gcd">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
@@ -183,11 +196,27 @@
                         <connections>
                             <outlet property="dataSource" destination="Vgi-Iu-SCC" id="oLB-Xe-kUH"/>
                             <outlet property="delegate" destination="Vgi-Iu-SCC" id="2OI-p3-7bQ"/>
+                            <outletCollection property="gestureRecognizers" destination="I0m-Rm-wSD" appends="YES" id="nu4-uD-mL1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="xCh-KV-Ngq"/>
+                    <navigationItem key="navigationItem" id="xCh-KV-Ngq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="nrh-cG-Vee">
+                            <connections>
+                                <action selector="activateSearch:" destination="Vgi-Iu-SCC" id="UIw-Pm-3s0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="deactivateSearchTap" destination="I0m-Rm-wSD" id="KAu-4f-k8v"/>
+                        <outlet property="searchBar" destination="9YB-ZN-BzS" id="SFE-pJ-i8S"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ji-VB-YFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="I0m-Rm-wSD">
+                    <connections>
+                        <action selector="deactivateSearch:" destination="Vgi-Iu-SCC" id="oUK-55-Tbj"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="526" y="256"/>
         </scene>
@@ -283,13 +312,13 @@ Image</string>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="oBm-ZH-Ngb" firstAttribute="centerY" secondItem="vLg-ST-sal" secondAttribute="centerY" type="default" id="3js-Wk-Unb"/>
-                            <constraint firstItem="clb-i4-bDQ" firstAttribute="bottom" secondItem="Njh-j1-Kma" secondAttribute="bottom" type="default" id="4dQ-Mg-ww2"/>
                             <constraint firstItem="clb-i4-bDQ" firstAttribute="trailing" secondItem="Njh-j1-Kma" secondAttribute="trailing" type="default" id="8Gj-PV-F9c"/>
+                            <constraint firstItem="clb-i4-bDQ" firstAttribute="centerY" secondItem="Njh-j1-Kma" secondAttribute="centerY" type="default" id="8c4-oH-ViG"/>
+                            <constraint firstItem="clb-i4-bDQ" firstAttribute="centerX" secondItem="vLg-ST-sal" secondAttribute="centerX" type="default" id="Jdg-Ai-PBy"/>
                             <constraint firstItem="clb-i4-bDQ" firstAttribute="top" secondItem="Njh-j1-Kma" secondAttribute="top" type="default" id="Lee-fB-zGp"/>
                             <constraint firstItem="clb-i4-bDQ" firstAttribute="leading" secondItem="Njh-j1-Kma" secondAttribute="leading" type="default" id="LgC-gy-gno"/>
                             <constraint firstItem="oBm-ZH-Ngb" firstAttribute="centerY" secondItem="clb-i4-bDQ" secondAttribute="centerY" type="default" id="cWZ-oH-9oa"/>
                             <constraint firstItem="oBm-ZH-Ngb" firstAttribute="centerX" secondItem="vLg-ST-sal" secondAttribute="centerX" type="default" id="eix-MA-f2M"/>
-                            <constraint firstItem="oBm-ZH-Ngb" firstAttribute="centerX" secondItem="clb-i4-bDQ" secondAttribute="centerX" type="default" id="nOv-jh-VTH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="g4H-2J-Wgw"/>
@@ -348,6 +377,44 @@ Image</string>
             <point key="canvasLocation" x="-617" y="12"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CoreDataTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PhotoAllTVC" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoAllTVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="deactivateSearchTap" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="PhotoImageVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoImageVC.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="backgroundLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="barButtonTitle" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="PhotoRecentsTVC" superclassName="PhotoTitlesTVC">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoRecentsTVC.h"/>
+        </class>
+        <class className="PhotoTagsTVC" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoTagsTVC.h"/>
+        </class>
+        <class className="PhotoTitlesTVC" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoTitlesTVC.h"/>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
