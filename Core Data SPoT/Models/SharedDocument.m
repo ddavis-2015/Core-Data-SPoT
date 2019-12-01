@@ -104,7 +104,7 @@
     });
 }
 
-- (void)update:(void (^)(void))completion
+- (void)update:(BOOL)clearDB completion:(void (^)(void))completion
 {
     [self whenReadyPerformBlock:^
     {
@@ -116,10 +116,17 @@
 
             [NetworkActivity stopIndicator];
 
-            [[self.managedObjectContext parentContext] performBlock:^
+            NSManagedObjectContext* context = [self.managedObjectContext parentContext];
+
+            [context performBlock:^
             {
-                [self processFlickrData:photos managedObjectContext:[self.managedObjectContext parentContext]];
-                assert([[self.managedObjectContext parentContext] save:nil]);
+                if (clearDB)
+                {
+                    [PhotoInfo removeAllWithManagedObjectContext:context];
+                    [PhotoTag removeAllWithManagedObjectContext:context];
+                }
+                [self processFlickrData:photos managedObjectContext:context];
+                assert([context save:nil]);
                 dispatch_async(dispatch_get_main_queue(), ^
                 {
                     completion();

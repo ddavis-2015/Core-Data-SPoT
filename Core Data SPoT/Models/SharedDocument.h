@@ -17,6 +17,6 @@
 + (SharedDocument*)sharedInstance;
 
 - (void)whenReadyPerformBlock:(void (^)(void))completion; // completion executed in main thread
-- (void)update:(void (^)(void))completion; // completion executed in main thread
+- (void)update:(BOOL)clearDB completion:(void (^)(void))completion; // completion executed in main thread
 
 @end

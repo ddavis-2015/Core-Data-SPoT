@@ -13,5 +13,6 @@
 
 + (NSSet*)addPhotoTags:(NSDictionary*)flickr managedObjectContext:(NSManagedObjectContext*)context; // PhotoTag*
 + (PhotoTag*)addPhotoTagAllInManagedObjectContext:(NSManagedObjectContext*)context;
++ (void)removeAllWithManagedObjectContext:(NSManagedObjectContext*)context;
 
 @end

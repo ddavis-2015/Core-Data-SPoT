@@ -77,4 +77,20 @@
     return photoTag;
 }
 
++ (void)removeAllWithManagedObjectContext:(NSManagedObjectContext*)context
+{
+    NSString* className = NSStringFromClass([self class]);
+    NSFetchRequest* fetch = [NSFetchRequest fetchRequestWithEntityName:className];
+    [fetch setIncludesPropertyValues:NO];
+
+    NSArray* results = [context executeFetchRequest:fetch error:nil];
+
+    assert(results);
+
+    for (NSManagedObject* obj in results)
+    {
+        [context deleteObject:obj];
+    }
+}
+
 @end

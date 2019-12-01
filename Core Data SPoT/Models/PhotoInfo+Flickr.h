@@ -12,5 +12,6 @@
 @interface PhotoInfo (Flickr)
 
 + (PhotoInfo*)addPhotoInfo:(NSDictionary*)flickr managedObjectContext:(NSManagedObjectContext*)context;
++ (void)removeAllWithManagedObjectContext:(NSManagedObjectContext*)context;
 
 @end

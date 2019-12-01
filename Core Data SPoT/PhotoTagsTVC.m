@@ -10,6 +10,7 @@
 #import "PhotoTitlesTVC.h"
 #import "SharedDocument.h"
 #import "PhotoTag.h"
+#import "CachedURL.h"
 
 
 @interface PhotoTagsTVC ()
@@ -21,8 +22,15 @@
 
 - (void)reloadPhotos
 {
+    [self reloadPhotosShouldClearDB:YES];
+}
+
+- (void)reloadPhotosShouldClearDB:(BOOL)clearDB
+{
     [self.refreshControl beginRefreshing];
-    [[SharedDocument sharedInstance] update:^
+    if (clearDB)
+        [[CachedURL sharedInstance] removeAll];
+    [[SharedDocument sharedInstance] update:clearDB completion:^
     {
         [self performFetch];
         [self.refreshControl endRefreshing];
@@ -79,7 +87,7 @@
                                                                                        cacheName:nil];
         assert(self.fetchedResultsController.fetchedObjects);
         if (![self.fetchedResultsController.fetchedObjects count])
-            [self reloadPhotos];
+            [self reloadPhotosShouldClearDB:NO];
     }];
 }
 
@@ -137,7 +145,7 @@
     
     // Configure the cell...
     cell.textLabel.text = photoTag.flickrName;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%u photo%@", count, count > 1 ? @"s" : @""];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%lu photo%@", count, count > 1 ? @"s" : @""];
     
     return cell;
 }

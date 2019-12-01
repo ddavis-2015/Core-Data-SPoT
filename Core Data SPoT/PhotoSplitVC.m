@@ -21,7 +21,7 @@
 
 - (void)detailViewDidLoad
 {
-    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation) && self.button)
+    if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice.orientation) && self.button)
     {
         UIViewController* detail = self.viewControllers[1];
         
