@@ -44,6 +44,7 @@
 		4D3138D62393343800A8C2A6 /* flickr_config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = flickr_config.json; path = ../../flickr_config.json; sourceTree = "<group>"; };
 		4D3138DC2393AF3E00A8C2A6 /* FlickrConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FlickrConfig.m; path = FlickrFetcher/FlickrConfig.m; sourceTree = "<group>"; };
 		4D3138DE2393B00800A8C2A6 /* FlickrConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FlickrConfig.h; path = FlickrFetcher/FlickrConfig.h; sourceTree = "<group>"; };
+		4D3138E62394A91000A8C2A6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4D55CE0F16EC0BAE004EB357 /* PhotoInfo+Flickr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PhotoInfo+Flickr.h"; path = "Models/PhotoInfo+Flickr.h"; sourceTree = "<group>"; };
 		4D55CE1016EC0BAE004EB357 /* PhotoInfo+Flickr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PhotoInfo+Flickr.m"; path = "Models/PhotoInfo+Flickr.m"; sourceTree = "<group>"; };
 		4D55CE1216EC0BC9004EB357 /* PhotoTag+Flickr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PhotoTag+Flickr.h"; path = "Models/PhotoTag+Flickr.h"; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 		4DB17AF916EB369600F70449 = {
 			isa = PBXGroup;
 			children = (
+				4D3138E62394A91000A8C2A6 /* README.md */,
 				4D3138D62393343800A8C2A6 /* flickr_config.json */,
 				4DB17B0B16EB369600F70449 /* Core Data SPoT */,
 				4DB17B0416EB369600F70449 /* Frameworks */,
