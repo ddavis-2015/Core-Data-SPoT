@@ -122,7 +122,7 @@
 {
     static NSString *CellIdentifier;
     PhotoTag* photoTag = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSUInteger count;
+    unsigned long count;
 
     if (indexPath.section == 0 && indexPath.row == 0)
     {
